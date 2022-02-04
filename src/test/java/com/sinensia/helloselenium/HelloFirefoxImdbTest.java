@@ -32,6 +32,7 @@ public class HelloFirefoxImdbTest {
   }
   @Test
   public void helloImdb() {
+    WebElement we;
     // Test name: HelloImdb
     // Step # | name | target | value
     // 1 | open | https://www.imdb.com/ | 
@@ -44,12 +45,12 @@ public class HelloFirefoxImdbTest {
     js.executeScript("window.scrollTo(0,0)");
     // 5 | sendKeys | id=suggestion-search | ${KEY_ENTER}
     driver.findElement(By.id("suggestion-search")).sendKeys(Keys.ENTER);
-    // 6 | click | linkText=Squid Game | 
-    WebElement we;
+    // 6 | click | linkText=Squid Game |
+    // wait until the "Squid Game" link is ready to be clicked
     we = new WebDriverWait(driver, 15)
             .until(ExpectedConditions.elementToBeClickable(By.linkText("Squid Game")));
-    driver.findElement(By.linkText("Squid Game")).click();
-    // 6.5
+    we.click();
+    // 6.5 wait until a clickable "User reviews" link shows up
     we = new WebDriverWait(driver, 15)
             .until(ExpectedConditions.elementToBeClickable(By.linkText("User reviews")));
     // 7 | assertText | xpath=//h1 | Squid Game
