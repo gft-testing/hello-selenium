@@ -31,7 +31,7 @@ public class MainPageTest {
         driver.quit();
     }
 
-    @Test
+    // @Test
     public void search() {
         mainPage.searchButton.click();
 
@@ -45,7 +45,7 @@ public class MainPageTest {
         assertEquals("Selenium", searchPageField.getAttribute("value"));
     }
 
-    @Test
+    // @Test
     public void toolsMenu() {
         new Actions(driver)
                 .moveToElement(mainPage.toolsMenu)
